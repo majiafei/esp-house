@@ -1,0 +1,17 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: esp-web
+  cloud:
+    zookeeper:
+      connect-string: 192.168.221.100:2181
+feign:
+  hystrix:
+    enabled: false
+
+ribbon:
+  ReadTimeout: 1200000  #处理超时时间 默认5秒
+  ConnectTimeout: 1200000 #连接超时时间 默认2秒
+
+
