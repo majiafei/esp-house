@@ -83,7 +83,7 @@ public class UserController {
     ////////////////////// 登录 ////////////////////////
     @GetMapping("/accounts/signin")
     public String initLogin() {
-        return "/user/accounts/signin";
+        return "user/accounts/signin";
     }
 
     @PostMapping(value = "/accounts/signin")
