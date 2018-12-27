@@ -1,0 +1,33 @@
+server:
+  port: 8002
+
+spring:
+  cloud:
+    zookeeper:
+      connect-string: 192.168.221.100:2181
+  application:
+    name: gateway
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #暴露所有的监控接口
+  server:
+    port: 8003
+zuul:
+  routes:
+    user:
+      path: /user/**
+      serviceId: user-service
+    house:
+      path: /house/**
+      serviceId: house-server
+    comment:
+      path: /comment/**
+      serviceId: comment-server
+  ignored-services: "*"
+
+ribbon:
+  ReadTimeout: 1200000
+  ConnectTimeout: 1200000

@@ -1,0 +1,44 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: comment-server #服务名称
+  cloud:
+    zookeeper:
+      connect-string: 192.168.221.100:2181 #注册中心的地址
+
+  druid:
+    borrowConnectionTimeout: 30000
+    maxActive: 20
+    maxWait: 10000
+    minEvictableIdleTimeMillis: 300000
+    minIdle: 3
+    password: 1111
+    timeBetweenEvictionRunsMillis: 60000
+    url: jdbc:mysql://127.0.0.1:3306/comment?useSSL=true
+    username: root
+    validationQuery: SELECT 'x' # 解决mysql8小时问题
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+mapper:
+  not-empty: true
+  identity: MYSQL
+
+#日志
+logging:
+  level:
+    com.esp.house.comment.commentserver.mapper: debug
+
+#七牛云的配置
+qiniu:
+#  accessKey: bP_-Q9Pf1smTdlKNrtglsLsgNVLSKy6j0-H-COe7
+#  secretKey: AqMp9NmfZXd9WwyapxpBczHH-rg8kFYHWvAsKv7k
+#  bucket: hyson
+  urlPrefix: http://pjzbjaw2u.bkt.clouddn.com/
+image:
+  prefix: http://localhost:8000/imgs
