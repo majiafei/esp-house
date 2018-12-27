@@ -44,7 +44,7 @@ public class UserController {
             List<?> list = (List<?>) apiResponse.getData();
             List<AgencyVO> agencyVOList= GeneralConvert.convert2List(list, AgencyVO.class);
             modelMap.put("agencyList", agencyVOList);
-            return "/user/accounts/register";
+            return "user/accounts/register";
         }
 
         // 调用图片上传
@@ -122,7 +122,7 @@ public class UserController {
         UserVO userVO = GeneralConvert.converter(profile.getData(), UserVO.class);
         model.addAttribute("user", userVO);
 
-        return "/user/accounts/profile";
+        return "user/accounts/profile";
     }
 
     @GetMapping("accounts/remember")
@@ -136,7 +136,7 @@ public class UserController {
         String activeUrl = baseUrl+"/accounts/reset";
         accountService.remember(email, activeUrl);
         modelMap.put("email", email);
-        return "/user/accounts/remember";
+        return "user/accounts/remember";
     }
 
     @RequestMapping("accounts/reset")
@@ -152,7 +152,7 @@ public class UserController {
         modelMap.put("email", email);
         modelMap.put("success_key", key);
 
-        return "/user/accounts/reset";
+        return "user/accounts/reset";
     }
 
     @PostMapping("accounts/resetSubmit")

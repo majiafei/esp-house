@@ -31,6 +31,10 @@ spring:
     username: 13963949859@163.com
   application:
     name: house-server
+  boot:
+    admin:
+      client:
+        url: http://localhost:10001
 mybatis:
   configuration:
     map-underscore-to-camel-case: true #将实体类的驼峰对应数据库字段中的下划线

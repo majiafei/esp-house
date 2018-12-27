@@ -20,12 +20,9 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
  * @Package: com.ruanmou.zuul.userzuul.filter
  * @ClassName: TokenFilter
  * @Author: majiafei
- * @Description:
- *
- * <pre>
+ * @Description: <pre>
  *     token的过滤器
  * </pre>
- *
  * @Date: 2018/12/25 12:13
  */
 @SpringBootConfiguration
@@ -48,6 +45,7 @@ public class TokenFilter extends ZuulFilter {
     /**
      * 过滤器的类型
      * PRE_TYPE代表前置过滤器
+     *
      * @return
      */
     @Override
@@ -57,17 +55,19 @@ public class TokenFilter extends ZuulFilter {
 
     /**
      * 过滤器的执行顺序
+     *
      * @return
      */
     @Override
     public int filterOrder() {
-        return PRE_DECORATION_FILTER_ORDER  - 1;
+        return PRE_DECORATION_FILTER_ORDER - 1;
     }
 
     /**
      * 是否去执行过滤器
      * true：是
      * false：否，不执行拦截
+     *
      * @return
      */
     @Override
@@ -103,7 +103,7 @@ public class TokenFilter extends ZuulFilter {
             context.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
         } else {
             // 鉴权验证token是否合法
-            String url = "http://user-service/token/verify?token="+token;
+            String url = "http://user-service/token/verify?token=" + token;
             String json = restTemplate.getForObject(url, String.class);
             Message message = JSONObject.parseObject(json, Message.class);
            /* if ("gerry".equals(message.getData())) {

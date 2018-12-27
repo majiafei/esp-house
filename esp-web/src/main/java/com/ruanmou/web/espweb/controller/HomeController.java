@@ -29,7 +29,7 @@ public class HomeController {
         List<House> data = apiResponse.getData();
         modelMap.put("newestHouses", data);
 
-        return "/index";
+        return "index";
     }
 
     @GetMapping("")

@@ -4,7 +4,6 @@ server:
     whitelabel:
       enabled: false
   port: 8000
-
 spring:
   druid:
     borrowConnectionTimeout: 30000
@@ -35,6 +34,10 @@ spring:
       connect-string: 192.168.221.100:2181
   application:
     name: user-service
+  boot:
+    admin:
+      client:
+        url: http://localhost:10001
 mapper:
   not-empty: true
   identity: MYSQL

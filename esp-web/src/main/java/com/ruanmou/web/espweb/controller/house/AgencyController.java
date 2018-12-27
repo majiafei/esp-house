@@ -50,7 +50,7 @@ public class AgencyController {
             return "redirect:/accounts/signin";
         }
 
-        return "/user/agency/create";
+        return "user/agency/create";
     }
 
     /**
@@ -82,7 +82,7 @@ public class AgencyController {
         modelMap.put("hotHouses", hotHouseData);
         modelMap.put("agencyList", agencyData);
 
-        return "/user/agency/agencyList";
+        return "user/agency/agencyList";
     }
 
     @GetMapping("agencyDetail")
@@ -99,7 +99,7 @@ public class AgencyController {
         modelMap.put("hotHouses", hotHouseData);
         modelMap.put("agency", data);
 
-        return "/user/agency/agencyDetail";
+        return "user/agency/agencyDetail";
     }
 
     @GetMapping("agentList")
@@ -127,6 +127,6 @@ public class AgencyController {
         modelMap.put("hotHouses", hotHouseData);
         modelMap.put("pageData", pageData);
 
-        return "/user/agent/agentList";
+        return "user/agent/agentList";
     }
 }

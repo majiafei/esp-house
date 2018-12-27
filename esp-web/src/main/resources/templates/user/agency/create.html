@@ -88,21 +88,18 @@
 <!--[if gt IE 8]>
 <script type="text/javascript" src="assets/js/ie.js"></script>
 <![endif]-->
- <script  type="text/javascript" >
-     
-
-     $(document).ready(function() {
-          var errorMsg   = "${errorMsg!""}";
-          var successMsg = "${successMsg!""}";
-          if(errorMsg){ 
-              errormsg("error",errorMsg);
-          }
-          if(successMsg) {
-              successmsg("success",successMsg);
-          }
-        })
-        
- </script>
+<script th:inline="javascript">
+    $(document).ready(function() {
+        var errorMsg   = "[(${errorMsg})]";
+        var successMsg = "[(${successMsg})]";
+        if(errorMsg){
+            errormsg("error",errorMsg);
+        }
+        if(successMsg) {
+            successmsg("success",successMsg);
+        }
+    })
+</script>
 
 </body>
 </html>

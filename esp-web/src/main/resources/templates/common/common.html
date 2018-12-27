@@ -39,11 +39,11 @@
                             <h3>联系方式</h3>
                             <address>
                                 <strong>公司地址</strong><br>
-                                北京西直门<br>
-                                奋斗大厦B座3层
+                                武汉市洪山区<br>
+                                软件孵化大厦B座3层
                             </address>
                             010-87111111<br>
-                            <a href="#">hello@example.com</a>
+                            <a href="#">communication@example.com</a>
                         </article>
                     </div><!-- /.col-sm-3 -->
                     <div class="col-md-3 col-sm-3">
@@ -108,11 +108,9 @@
             <div class="user-area">
                 <div class="actions">
                     <a th:href="@{/accounts/profile(email=${session.loginUser?.email})}" href="/accounts/profile"
-                       th:if="${session.loginUser?.email}!=null" class="promoted">Hello,<span
-                            th:text="${session.loginUser?.email}"></span></a>
+                       th:if="${session.loginUser?.email}!=null" class="promoted">Hello,<span th:text="${session.loginUser?.email}" th:remove="tag"></span></a>
                     <a href="/agency/create" th:if="${session.loginUser?.type}==2" class="promoted">创建经纪机构</a>
-                    <a href="/accounts/register" th:if="${session.loginUser?.email}==null"
-                       class="promoted"><strong>注册</strong></a>
+                    <a href="/accounts/register" th:if="${session.loginUser?.email}==null" class="promoted"><strong>注册</strong></a>
                     <a href="/accounts/logout" th:if="${session.loginUser?.email}!=null" class="promoted">退出</a>
                     <a href="/accounts/signin" th:if="${session.loginUser?.email}==null">登录</a>
                 </div>
@@ -167,7 +165,7 @@
 <ul th:fragment="pagination (pagination)" class="pagination">
     <label th:each="page : ${pagination.pages}" th:remove="tag">
             <span th:if="${pagination.pageNum} == ${page}" th:remove="tag">
-                <li class="active"><a href="#" th:text="${page}"></a></li>
+                <li class="active"><a href="javascript:void(0)" th:text="${page}"></a></li>
             </span>
         <span th:if="${pagination.pageNum} != ${page}" th:remove="tag">
                 <li><a href="javascript:void(0)" th:onclick="|nextPage(${page},${pagination.pageSize})|"
