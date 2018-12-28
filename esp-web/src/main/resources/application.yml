@@ -8,7 +8,7 @@ spring:
       connect-string: 192.168.221.100:2181
 feign:
   hystrix:
-    enabled: false
+    enabled: true
 
 ribbon:
   ReadTimeout: 1200000  #处理超时时间 默认5秒
