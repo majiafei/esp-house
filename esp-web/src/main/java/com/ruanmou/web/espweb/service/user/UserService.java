@@ -1,6 +1,7 @@
 package com.ruanmou.web.espweb.service.user;
 
 import com.ruanmou.web.espweb.common.ApiResponse;
+import com.ruanmou.web.espweb.model.ListResponse;
 import com.ruanmou.web.espweb.vo.UserVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
@@ -66,4 +67,6 @@ public interface UserService {
                                @RequestParam("password") String password,
                                @RequestParam("newPassword") String newPassword,
                                @RequestParam("confirmPassword") String confirmPassword);
+    @GetMapping("user/agency/agentList")
+    ApiResponse<ListResponse<UserVO>> agentList(@RequestParam("limit") Integer limit, @RequestParam("offset") Integer offset);
 }

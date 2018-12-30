@@ -17,7 +17,8 @@ import java.util.List;
  * @Date: 2018/11/29 20:19
  * @Description: 房产接口
  */
-@FeignClient(name = "gateway", fallback = HouseService.HouseServiceFallback.class)
+//@FeignClient(name = "gateway", fallback = HouseService.HouseServiceFallback.class)
+@FeignClient(name = "gateway")
 public interface HouseService {
     // 查询最新房源信息
     @GetMapping("/house/house/newest")
@@ -85,67 +86,4 @@ public interface HouseService {
      */
     @PostMapping("house/house/add")
     ApiResponse addHouse(@RequestBody House house);
-
-    @Component
-    class HouseServiceFallback implements HouseService {
-        @Override
-        public ApiResponse<List<House>> getNewest() {
-            return ResponseDataUtil.setResponseData("getNewest");
-        }
-
-        @Override
-        public ApiResponse<ListResponse<House>> houseList(HouseQueryReq houseQueryReq) {
-            return ResponseDataUtil.setResponseData("houseList");
-        }
-
-        @Override
-        public ApiResponse<List<House>> getHotHouse(Integer size) {
-            return ResponseDataUtil.setResponseData("getHotHouse");
-        }
-
-        @Override
-        public ApiResponse<House> houseDetail(long id) {
-            return ResponseDataUtil.setResponseData("houseDetail");
-        }
-
-        @Override
-        public ApiResponse bind(HouseUserReq req) {
-            return ResponseDataUtil.setResponseData("bind");
-        }
-
-        @Override
-        public ApiResponse leaveMsg(UserMsg userMsg) {
-            return ResponseDataUtil.setResponseData("leaveMsg");
-        }
-
-        @Override
-        public ApiResponse houseRate(Double rating, Long id) {
-            return ResponseDataUtil.setResponseData("houseRate");
-        }
-
-        @Override
-        public ApiResponse<List<Community>> allCommunities() {
-            return ResponseDataUtil.setResponseData("allCommunities");
-        }
-
-        @Override
-        public ApiResponse<List<City>> allCity() {
-            return ResponseDataUtil.setResponseData("allCity");
-        }
-
-        @Override
-        public ApiResponse<List<String>> houseFileUpload(MultipartFile[] multipartFiles) {
-            return ResponseDataUtil.setResponseData("houseFileUpload");
-        }
-
-        @Override
-        public ApiResponse<List<String>> floorPlanUpload(MultipartFile[] multipartFiles) {
-            return ResponseDataUtil.setResponseData("floorPlanUpload");
-        }
-
-        @Override
-        public ApiResponse addHouse(House house) {
-            return ResponseDataUtil.setResponseData("addHouse");
-        }
-    }
 }

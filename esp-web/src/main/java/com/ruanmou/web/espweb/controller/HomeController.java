@@ -2,7 +2,9 @@ package com.ruanmou.web.espweb.controller;
 
 import com.ruanmou.web.espweb.common.ApiResponse;
 import com.ruanmou.web.espweb.model.House;
+import com.ruanmou.web.espweb.model.ListResponse;
 import com.ruanmou.web.espweb.service.house.HouseService;
+import com.ruanmou.web.espweb.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,6 +23,7 @@ public class HomeController {
 
     @Autowired(required = false)
     private HouseService houseService;
+
 
     @GetMapping("/index")
     public String index(ModelMap modelMap) {

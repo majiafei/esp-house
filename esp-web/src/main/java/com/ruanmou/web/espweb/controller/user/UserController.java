@@ -2,6 +2,7 @@ package com.ruanmou.web.espweb.controller.user;
 
 import com.ruanmou.web.espweb.common.ApiResponse;
 import com.ruanmou.web.espweb.common.UserContext;
+import com.ruanmou.web.espweb.model.ListResponse;
 import com.ruanmou.web.espweb.service.user.UserService;
 import com.ruanmou.web.espweb.util.CookieUtil;
 import com.ruanmou.web.espweb.util.GeneralConvert;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.HashSet;
 import java.util.List;
 
 /**

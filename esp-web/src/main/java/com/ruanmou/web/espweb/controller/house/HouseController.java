@@ -5,7 +5,9 @@ import com.ruanmou.web.espweb.common.ApiResponse;
 import com.ruanmou.web.espweb.common.PageData;
 import com.ruanmou.web.espweb.common.PageParams;
 import com.ruanmou.web.espweb.common.UserContext;
+import com.ruanmou.web.espweb.constant.CommentType;
 import com.ruanmou.web.espweb.constant.HouseUserType;
+import com.ruanmou.web.espweb.controller.blog.BlogController;
 import com.ruanmou.web.espweb.model.*;
 import com.ruanmou.web.espweb.service.blog.CommentService;
 import com.ruanmou.web.espweb.service.house.AgencyService;
@@ -98,16 +100,24 @@ public class HouseController {
                 modelMap.put("agency",  data);
             }
         }
-
+        // 获取房产对应的所有评论
+        CommentReq commentReq = new CommentReq();
+        commentReq.setHouseId(id);
+        commentReq.setSize(BlogController.COMMENT_SIZE);
+        commentReq.setType(CommentType.HOUSE.value);
+        ApiResponse<List<Comment>> listApiResponse = commentService.listComments(commentReq);
+        List<Comment> comments = listApiResponse.getData();
         // 获取热门房产信息
         ApiResponse<List<House>> hot= houseService.getHotHouse(HOT_SIZE);
         List<House> hotHouse = hot.getData();
         // 封装页面渲染的数据
+        modelMap.put("commentList", comments);
         modelMap.put("hotHouses", hotHouse);
         modelMap.put("house", house);
 
         return "house/detail";
     }
+
 
     /**
      * 初始化所有的城市和小区
@@ -116,14 +126,16 @@ public class HouseController {
      */
     @GetMapping("/house/initAdd")
     public String initAddHouse(ModelMap modelMap) {
-        ApiResponse<List<City>> cityResponse = houseService.allCity();
-        List<City> cities = cityResponse.getData();
-        ApiResponse<List<Community>> communitiesResponse = houseService.allCommunities();
-        List<Community> communities = communitiesResponse.getData();
+            ApiResponse<List<City>> cityResponse = houseService.allCity();
+            List<City> cities = cityResponse.getData();
+            ApiResponse<List<Community>> communitiesResponse = houseService.allCommunities();
+            List<Community> communities = communitiesResponse.getData();
 
-        // 初始化数据
-        modelMap.put("cities", cities);
-        modelMap.put("communities", communities);
+            // 初始化数据
+            modelMap.put("cities", cities);
+            modelMap.put("communities", communities);
+
+
 
         return "house/add";
     }

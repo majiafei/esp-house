@@ -8,10 +8,15 @@ spring:
       connect-string: 192.168.221.100:2181
 feign:
   hystrix:
-    enabled: true
+    enabled: false
+
 
 ribbon:
   ReadTimeout: 1200000  #处理超时时间 默认5秒
   ConnectTimeout: 1200000 #连接超时时间 默认2秒
 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #暴露所有的监控路径

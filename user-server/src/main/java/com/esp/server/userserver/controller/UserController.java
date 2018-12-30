@@ -74,7 +74,7 @@ public class UserController {
     }
 
     @PostMapping(value = "accounts/upload")
-    public ApiResponse avatarUpload(@RequestParam MultipartFile avatarFile) {
+    public ApiResponse avatarUpload(@RequestParam("multipartFile") MultipartFile avatarFile) {
         String photoUrl =  "";
         try {
             Response response = qiNiuService.uploadFile(avatarFile.getInputStream());
@@ -227,6 +227,11 @@ public class UserController {
     public ApiResponse verifyUser(String token) {
         User user = accountService.getLoginUserByToken(token);
         return ApiResponse.ofSuccess(user);
+    }
+
+    @GetMapping("/accounts/getUser")
+    public ApiResponse<User> getUserById(Long id) {
+        return ApiResponse.ofSuccess(accountService.getUserById(id));
     }
 
 }

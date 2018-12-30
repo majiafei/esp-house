@@ -32,14 +32,24 @@ public class TokenFilter extends ZuulFilter {
     @Autowired
     private RestTemplate restTemplate;
 
+    // 定义非鉴权列表
     private static String[] noCheckList = {
             "/signin",
             "/logout",
+            "/register",
+            "/accounts/upload",
+            "/accounts/verify",
+            "/remember",
+            "/reset",
             "/newest",
             "/house/list",
-            "house/hot",
-            "/house/detail",
-            "/agency/detail"
+            "/house/hot",
+            "house/detail",
+            "/agency/detail",
+            "/rating",
+            "/blog/list",
+            "/blog/one",
+            "comment/list"
     };
 
     /**

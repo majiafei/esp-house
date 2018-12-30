@@ -13,7 +13,7 @@ spring:
     minIdle: 3
     password: 1111
     timeBetweenEvictionRunsMillis: 60000
-    url: jdbc:mysql://127.0.0.1:3306/house?useSSL=true
+    url: jdbc:mysql://192.168.221.101:3306/house?useSSL=false&useUnicode=true&characterEncoding=UTF8
     username: root
     validationQuery: SELECT 'x' # 解决mysql8小时问题
   redis:
@@ -31,10 +31,10 @@ spring:
     username: 13963949859@163.com
   application:
     name: house-server
-  boot:
-    admin:
-      client:
-        url: http://localhost:10001
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:10001
 mybatis:
   configuration:
     map-underscore-to-camel-case: true #将实体类的驼峰对应数据库字段中的下划线
